@@ -48,15 +48,15 @@ function setUpCamera() {
     // set up your projection
     // defualt is orthographic projection
     let projMatrix = glMatrix.mat4.create();
-    glMatrix.mat4.ortho(projMatrix, -10, 10, -10, 10, 1, 300.0);
-    //glMatrix.mat4.perspective(projMatrix, 90, 1, 1 / 256, 256)
+    //glMatrix.mat4.ortho(projMatrix, -10, 10, -10, 10, 1, 300.0);
+    glMatrix.mat4.perspective(projMatrix, 90, 1, 1 / 256, 256)
     gl.uniformMatrix4fv (program.uProjT, false, projMatrix);
 
     
     // set up your view
     // defaut is at (0,0,-5) looking at the origin
     let viewMatrix = glMatrix.mat4.create();
-    glMatrix.mat4.lookAt(viewMatrix, [0, 1, -8], [0, 0, 0], [0, 1, 0]);
+    glMatrix.mat4.lookAt(viewMatrix, [0, 2, -8], [0, 0, 0], [0, 1, 0]);
     gl.uniformMatrix4fv (program.uViewT, false, viewMatrix);
 }
 
@@ -91,7 +91,7 @@ function drawShapes() {
   //glMatrix.mat4.rotateZ (modelMatrix,  modelMatrix, radians(90.0))
   glMatrix.mat4.scale (modelMatrix,  modelMatrix, [2,2,3])
   
-  glMatrix.mat4.translate (modelMatrix,  modelMatrix, [0,0,0.58])
+  glMatrix.mat4.translate (modelMatrix,  modelMatrix, [0,0,0.56])
   
   gl.uniformMatrix4fv (program.uModelT, false, modelMatrix);
   gl.bindVertexArray(myCylinder.VAO);
@@ -146,7 +146,7 @@ function drawShapes() {
   
   glMatrix.mat4.scale (modelMatrix,  modelMatrix, [2,2,3])
   
-  glMatrix.mat4.translate (modelMatrix,  modelMatrix, [4,0,0.58])
+  glMatrix.mat4.translate (modelMatrix,  modelMatrix, [4,0,0.56])
   
   gl.uniformMatrix4fv (program.uModelT, false, modelMatrix);
   gl.bindVertexArray(myCylinder.VAO);
@@ -198,7 +198,7 @@ function drawShapes() {
   
   glMatrix.mat4.scale (modelMatrix,  modelMatrix, [2,2,3])
   
-  glMatrix.mat4.translate (modelMatrix,  modelMatrix, [-4,0,0.58])
+  glMatrix.mat4.translate (modelMatrix,  modelMatrix, [-4,0,0.56])
   
   gl.uniformMatrix4fv (program.uModelT, false, modelMatrix);
   gl.bindVertexArray(myCylinder.VAO);
@@ -218,7 +218,7 @@ function drawShapes() {
   // glMatrix.mat4.rotateX (modelMatrix,  modelMatrix, radians(10.0))
   glMatrix.mat4.scale (modelMatrix,  modelMatrix, [2,2,2])
   //glMatrix.mat4.rotateY (modelMatrix,  modelMatrix, radians(180.0))
-  glMatrix.mat4.translate (modelMatrix,  modelMatrix, [-4,0.58,0])
+  glMatrix.mat4.translate (modelMatrix,  modelMatrix, [-4,0.7,0])
   glMatrix.mat4.rotateX (modelMatrix,  modelMatrix, radians(90.0))
   //glMatrix.mat4.translate (modelMatrix,  modelMatrix, [0.5,0,0])
   // send the model matrix to the shader and draw.
